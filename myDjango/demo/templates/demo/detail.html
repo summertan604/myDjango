@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Book List</h1>
+<a href="{% url 'demo:addBook' %}" class="btn btn-success" style="margin-right: 75px">添加</a>
+<table>
+    <tr>
+        <td>书名</td>
+        <td>作者</td>
+        <td>出版社</td>
+        <td>出版时间</td>
+    </tr>
+{% for book in book_list.all %}
+    <tr>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.pub_house }}</td>
+        <td>{{ book.pub_date }}</td>
+        <td><a href="{% url 'demo:editBook' book.id %}">编辑</a></td>
+        <td><a href="{% url 'demo:delBook' book.id %}">删除</a></td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
